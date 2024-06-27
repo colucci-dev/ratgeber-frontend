@@ -1,22 +1,15 @@
-import { fetchAPI } from "./utils/api";
-import { BlocksRenderer, type BlocksContent } from "@strapi/blocks-react-renderer";
+import Assistant from "./components/Landingpage/Assistant";
+import BlogTeaser from "./components/Landingpage/BlogTeaser";
+import ShortLinks from "./components/Landingpage/ShortLinks";
+import PageContainer from "./components/PageContainer";
 
-export default async function Home() {
-  const x = await fetchAPI("begriffe");
-  const result = x.data.map((begriff: any) => {
-      return <div key={begriff.id}>
-        <h1>
-          {begriff.attributes.Begriff}
-        </h1>
-        <BlocksRenderer content={begriff.attributes.Definition} />
-      </div>
-  }
-  );
-
-  return (
-    <div style={{padding: "30px"}}>
-      <h1>Hello World!</h1>
-      {result}
-    </div>
-  );
+export default function Home() {
+    return (
+        <PageContainer image="assets/bmw_m8.png">
+        <h1>guten tag</h1>
+        <ShortLinks />
+        <Assistant />
+        <BlogTeaser />
+        </PageContainer>
+    )
 }

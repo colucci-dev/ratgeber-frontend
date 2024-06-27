@@ -1,0 +1,72 @@
+:root {
+  --max-width: 1630px;
+  --bmw-linkcolor: #707070;
+  --bmw-hellgrau: #D8D8D8;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 1630px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  row-gap: 6px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  border-bottom: 10px var(--bmw-hellgrau) solid;
+}
+
+.header .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header img {
+  margin: 0.5rem;
+  width: auto;
+  display: block;
+}
+
+.group-left {
+  display: flex;
+  text-align: center;
+}
+
+.group-right {
+  display: flex;
+  align-items: center;
+}
+
+.header a {
+  text-decoration: none;
+  color: var(--bmw-linkcolor);
+  font-size: 14pt;
+  font-weight: bold;
+  font-family: sans-serif;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: max-content;
+}
+
+.page-container {
+  margin: 0;
+  padding: 0;
+}
+
+.teaser-img {
+  width: 100%;
+  height: auto;
+
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    margin: 0;
+  }
+}
