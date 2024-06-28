@@ -4,6 +4,7 @@ import { BlocksRenderer, type BlocksContent } from "@strapi/blocks-react-rendere
 
 export default async function Words() {
   const x = await fetchAPI("begriffe");
+   console.log(x);
   const result = x.data.map((begriff: any) => {
       return <div key={begriff.id}>
         <h1>

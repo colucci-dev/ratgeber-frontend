@@ -14,7 +14,10 @@ export default function Header(props: any) {
             <div className="group-right">
                 <a href="/creator"><span>Creator</span></a>
                 <a href="/blog"><span>Blog</span></a>
+                <a href="/glossar"><span>Glossar</span></a>
                 <a href="/downloads"><span>Downloads</span></a>
+                <a href="/de"><span>DE</span></a>
+                <a href="/en"><span>EN</span></a>
             </div>
         </div>
     </div>

@@ -1,15 +1,17 @@
 :root {
   --max-width: 1630px;
-  --bmw-linkcolor: #707070;
+  --bmw-titelfarbe: #707070;
   --bmw-hellgrau: #D8D8D8;
+  --bmw-container: #F2F2F2;
 }
 
 body {
   margin: 0;
   box-sizing: border-box;
   max-width: 1630px;
-  margin-left: 120px;
-  margin-right: 120px;
+  width: 85%;
+  margin: 0 auto;
+  font-family: sans-serif;
 }
 
 .header {
@@ -45,7 +47,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: var(--bmw-linkcolor);
+  color: var(--bmw-titelfarbe);
   font-size: 14pt;
   font-weight: bold;
   font-family: sans-serif;
@@ -61,12 +63,65 @@ body {
 
 .teaser-img {
   width: 100%;
-  height: auto;
+  max-height: 540px;
 
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: var(--bmw-container);
+  color: var(--bmw-titelfarbe);
+  padding-bottom: 5%;
+  margin-top: 3%;
+}
+.grid-container a {
+  text-decoration: none;
+  color: var(--bmw-titelfarbe);
+}
+
+.grid-title { 
+  font-size: 38pt;
+  width: 90%;
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+}
+
+.grid-card {
+  display: block;
+  width: 400px;
+  flex-shrink: 0;
+  background-color: #fff;
+  margin: 2%;
+}
+
+.grid-card p {
+  display: block;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: 1em;
+  margin-inline-end: 1em;
+  font-weight: bold;
+}
+
+.grid-img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.chat-response {
+  width: 90%;
+  height: 300px;
 }
 
 @media only screen and (max-width: 768px) {
   body {
     margin: 0;
+    width: 100%;
+  }
+  .grid-card {
+    margin: 5%;
   }
 }

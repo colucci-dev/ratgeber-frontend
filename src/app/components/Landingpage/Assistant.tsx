@@ -2,16 +2,16 @@
 
 export default function Assistant() {
     return (
-    <div>
-        <h1>
+    <div className="grid-container">
+        <div className="grid-title">
             Ihr pers&ouml;nlicher Assistent
-        </h1>
-        <textarea id="chat_response">
+        </div>
+        <textarea className="chat-response" id="chat_response">
 
         </textarea>
         <form onSubmit={handleQuestion} >
-            <input type="text" id="question" />
-            <input type="submit" />
+            <input type="text" className="chat-input" id="question" />
+            <input type="submit" className="chat-button" />
         </form>
     </div>
     )
