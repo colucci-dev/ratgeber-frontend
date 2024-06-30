@@ -9,3 +9,26 @@ export async function fetchAPI(endpoint: string) {
     }
     return await response.json();
 }
+
+export async function fetchAssistant(question: string, threadId: string) {
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    const options = {method: 'POST', headers: headers, next: { revalidate: 300 }, body: JSON.stringify({question: question, threadId: threadId})};
+    
+    const response = await fetch(`/api/assistant`, options);
+    if(!response.ok) {
+        throw Error("Unexpected error!")
+    }
+    return (await response.json() as any).response;
+}
+
+
+export async function fetchThread() {
+    const options = {method: 'GET'};
+    
+    const response = await fetch(`/api/assistant/thread`, options);
+    if(!response.ok) {
+        throw Error("Unexpected error!")
+    }
+    return (await response.json() as any).threadId;
+}

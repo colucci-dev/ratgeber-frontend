@@ -2,9 +2,8 @@ import PageContainer from "../components/PageContainer";
 import { fetchAPI } from "../utils/api";
 import { BlocksRenderer, type BlocksContent } from "@strapi/blocks-react-renderer";
 
-export default async function Words() {
+export default async function Glossar() {
   const x = await fetchAPI("begriffe");
-   console.log(x);
   const result = x.data.map((begriff: any) => {
       return <div key={begriff.id}>
         <h1>
