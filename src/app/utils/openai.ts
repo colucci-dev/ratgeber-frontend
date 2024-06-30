@@ -22,11 +22,14 @@ export async function askAssistant(threadId: string, question: string) {
         const messages = await openai.beta.threads.messages.list(run.thread_id);
         var output = "";
         for (const message of messages.data.reverse()) {
-            if(message.content[0].type == 'text') {
-            output += `${message.role == 'user' ? "**Sie" : "**Ratgeber"} >** ${(message.content[0] as any).text.value} \r\n\r\n `;
-            } else if (message.content[0].type == 'image_url') {
+            switch(message.content[0].type) {
+            case 'text':
+                output += `${message.role == 'user' ? "**Sie" : "**Ratgeber"} >** ${(message.content[0] as any).text.value} \r\n\r\n `;
+                break;
+            case 'image_url':
                 output += `${message.role == 'user' ? "** Sie" : "**Ratgeber"} >** ${(message.content[0] as any).image_url.value}`;
-            } else if (message.content[0].type == 'image_file') {
+                break;
+            case 'image_file':
                 const fileId = (message.content[0] as any).image_file.file_id;
                 const filePath = serverPath(`public/ai_images/${fileId}.png`);
                 if (!fs.existsSync(filePath)) {                
@@ -35,6 +38,7 @@ export async function askAssistant(threadId: string, question: string) {
                     fs.appendFile(filePath, new Uint8Array(await new Response(file.body!).arrayBuffer()), (err) => { if (err) {console.error(err);}});
                 }
                 output += `**Ratgeber >** ![Generiertes Bild](/ai_images/${fileId}.png)`;
+                break;
             }
         }
         return output;

@@ -2,10 +2,10 @@ export async function fetchAPI(endpoint: string) {
     const headers = new Headers();
     headers.set('Authorization', `Bearer ${process.env.API_TOKEN}`)
     //next revalidate: Cache wird nach 300 Sekunden (5 minuten) aktualisiert
-    const options = { method: 'GET', headers: headers, next: { revalidate: 300}};
-    const response = await fetch(`${process.env.API_URL}/${endpoint}`, options);
+    const options = { method: 'GET', headers: headers, next: { revalidate: 0}};
+    const response = await fetch(`${process.env.API_URL}/api/${endpoint}`, options);
     if(!response.ok) {
-        throw Error("Unexpected error!")
+        throw await response.json();
     }
     return await response.json();
 }

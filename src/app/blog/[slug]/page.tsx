@@ -1,14 +1,24 @@
+import { fetchAPI } from "@/app/utils/api";
 import BlogHeader from "../../components/Blog/BlogHeader";
 import BlogText from "../../components/Blog/BlogText";
 import PageContainer from "../../components/PageContainer";
+import { ArticleResult } from "@/app/classes/article";
 
-export default function Blog({ params }: { params: { slug: string } }) {
+export default async function Blog({ params }: { params: { slug: string } }) {
+    const blogArticle : ArticleResult = (await fetchAPI(`blogs?filters[slug][$eq]=${params.slug}&populate=Image,category&pagination[pageSize]=1&pagination[page]=1`)).data[0];
 
     return (
-        <PageContainer image="bmw_m8.png">
-            BlogPost {params.slug}
-        <BlogHeader />
-        <BlogText />
+        <PageContainer image={`${process.env.API_URL}${blogArticle.attributes.Image.data.attributes.url}`}>
+        <div className="blogArticle">
+            <BlogHeader 
+            category={blogArticle.attributes.category?.data.attributes.Name ?? "Ohne Kategorie"}
+            title={blogArticle.attributes.Title} 
+            description={blogArticle.attributes.Description}
+            date={blogArticle.attributes.publishedAt} />
+            <BlogText 
+            content={blogArticle.attributes.Content}
+            />
+        </div>
         </PageContainer>
     )
 }

@@ -13,7 +13,7 @@ return (
         <a href={`/${props.href}`}>
             <img src={props.image} />
         <h6>{props.category} | {props.date}</h6>
-        <h2>{props.title.toLocaleUpperCase()}</h2>
+        <h2>{props.title}</h2>
         <p>{props.teaser}</p>
         </a>
     </div>

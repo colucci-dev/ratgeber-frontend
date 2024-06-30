@@ -4,6 +4,7 @@
   --bmw-hellgrau: #D8D8D8;
   --bmw-container: #F2F2F2;
   --bmw-hover: #5a5a5a;
+  --bmw-text: #494949;
 }
 
 body {
@@ -65,7 +66,8 @@ body {
 .teaser-img {
   width: 100%;
   max-height: 540px;
-
+  object-fit: cover;
+  object-position: 10% 10%;
 }
 .container {
   padding: 5%;
@@ -229,6 +231,11 @@ body {
 .chat-markdown img{
   width: 200px;
   height: auto;
+}
+
+
+.blogArticle {
+color: var(--bmw-text);
 }
 
 @media only screen and (max-width: 768px) {

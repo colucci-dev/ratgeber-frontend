@@ -5,7 +5,7 @@ import PageContainer from "./components/PageContainer";
 
 export default function Home() {
     return (
-        <PageContainer image="assets/bmw_m8.png">
+        <PageContainer image={`${process.env.NEXT_API}/assets/bmw_m8.png`}>
         <ShortLinks />
         <Assistant />
         <BlogTeaser />
