@@ -1,25 +1,44 @@
+import { ArticleResult } from "@/app/classes/article";
 import Card from "../Card"
+import { fetchAPI } from "@/app/utils/api";
 
-export default function BlogTeaser() {
+export default async function BlogTeaser() {
+    
+    const articles : {data: [ArticleResult]} = await fetchAPI("blogs?populate=Image,category&sort[0]=publishedAt:desc&pagination[pageSize]=4&pagination[page]=1")
+    
+    const headline = articles.data.pop()!;
+    
+    const blogPreview: JSX.Element[] = [];
+    articles.data.forEach((article, index) => {
+        blogPreview.push(
+            <Card 
+            key={article.id}
+            image={`${process.env.API_URL}${article.attributes.Image.data.attributes.formats.medium.url}`}
+            href={`blog/${article.attributes.slug}`} 
+            title={article.attributes.Title} 
+            category={article.attributes.category?.data.attributes.Name ?? "Unkategorisiert"}
+            date={article.attributes.publishedAt}
+            teaser={article.attributes.Description} />
+        );
+
+    })
     return (
     <div className="container">
         <div className="title">Aktuelle Themen</div>
             <div className="headline">
                 <div className="headline-item">
-            <img src="assets/bmw-street.jpg" />
-            </div>
+                    <img src={`${process.env.API_URL}${headline.attributes.Image.data.attributes.formats.medium.url}`} />
+                </div>
             <div className="headline-item headline-content">
-                <h6>Kategorie | 21.05.2024 | 4 Min.</h6>
-                <h2>DER WEG ZUR CONTENT-STRATEGIE</h2>
-                <p>Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen.</p>
+                <h6>{headline.attributes.category?.data.attributes.Name ?? "Unkategorisiert"} | {headline.attributes.publishedAt}</h6>
+                <h2>{headline.attributes.Title.toUpperCase()}</h2>
+                <p>{headline.attributes.Description}</p>
             </div>
         </div>
         <div className="grid-container">
-        <Card image={"assets/notebook.jpg"} href={"blog"} title={"Der Weg zur Content-Strategie"} category={"Content-Strategie"} date={"29.06.2024"} teaser={"Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen."} />
-        <Card image={"assets/notebook.jpg"} href={"blog"} title={"Der Weg zur Content-Strategie"} category={"Content-Strategie"} date={"29.06.2024"} teaser={"Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen."} />
-        <Card image={"assets/notebook.jpg"} href={"blog"} title={"Der Weg zur Content-Strategie"} category={"Content-Strategie"} date={"29.06.2024"} teaser={"Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen."} />
+            {blogPreview}
         </div>
-        <a className="button" href="/"><span>Lesen Sie mehr</span><img src="assets/right-arrow.svg" /></a>
+        <a className="button" href="/blog"><span>Lesen Sie mehr</span><img src="assets/right-arrow.svg" /></a>
     </div>
     )
 

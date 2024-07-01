@@ -1,6 +1,6 @@
 export default function BlogHeader(props: {category: string, title: string, description: string, date: string}) {
     return (
-        <div>
+        <div className="blog-header">
     <h5>
         {props.category} | {props.date}
     </h5>

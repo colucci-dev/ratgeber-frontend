@@ -236,6 +236,14 @@ body {
 
 .blogArticle {
 color: var(--bmw-text);
+width: 1000px;
+padding: 5%;
+}
+
+
+.blog-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 768px) {

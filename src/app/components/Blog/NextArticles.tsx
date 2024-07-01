@@ -1,24 +1,31 @@
-export default function NextArticles() {
+import { ArticleResult } from "@/app/classes/article";
+import { fetchAPI } from "@/app/utils/api"
+import Card from "../Card";
+
+export default async function NextArticles() {
+    const articles : {data: [ArticleResult]} = await fetchAPI("blogs?populate=Image,category&pagination[pageSize]=3&pagination[page]=1")
+
+    const previews : JSX.Element[] = [];
+
+    articles.data.forEach((article, index) => {
+        previews.push(
+            <Card 
+            key={article.id}
+        image={`${process.env.API_URL}${article.attributes.Image.data.attributes.formats.medium.url}`}
+        href={`blog/${article.attributes.slug}`} 
+        title={article.attributes.Title} 
+        category={article.attributes.category?.data.attributes.Name ?? "Unkategorisiert"}
+        date={article.attributes.publishedAt}
+        teaser={article.attributes.Description}
+         />
+        )
+    })
+
     return (
-        <div>
-            <h1>Weitere Artikel</h1>
-            <div className="article">
-            <h6>Kategorie | 21.05.2024 | 4 Min.</h6>
-        <h2>DER WEG ZUR CONTENT-STRATEGIE</h2>
-        <p>Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen.</p>
-        
-            </div>
-            <div className="article">
-            <h6>Kategorie | 21.05.2024 | 4 Min.</h6>
-        <h2>DER WEG ZUR CONTENT-STRATEGIE</h2>
-        <p>Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen.</p>
-        
-            </div>
-            <div className="article">
-            <h6>Kategorie | 21.05.2024 | 4 Min.</h6>
-        <h2>DER WEG ZUR CONTENT-STRATEGIE</h2>
-        <p>Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen.</p>
-        
+        <div className="container">
+            <div className="title">Weitere Artikel</div>
+            <div className="grid-container">
+                {previews} 
             </div>
         </div>
     )

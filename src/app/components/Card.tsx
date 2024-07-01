@@ -1,3 +1,5 @@
+import { ArticleResult } from "../classes/article"
+
 type CardProps = {
     image: string,
     href: string,
@@ -8,14 +10,14 @@ type CardProps = {
 }
 
 export default function Card(props : CardProps) {
-return (
-    <div className="grid-card">
-        <a href={`/${props.href}`}>
-            <img src={props.image} />
-        <h6>{props.category} | {props.date}</h6>
-        <h2>{props.title}</h2>
-        <p>{props.teaser}</p>
-        </a>
-    </div>
-)
+    return (
+        <div className="grid-card">
+            <a href={`/${props.href}`}>
+                <img src={props.image} />
+            <h6>{props.category} | {props.date}</h6>
+            <h2>{props.title}</h2>
+            <p>{props.teaser}</p>
+            </a>
+        </div>
+    )
 }

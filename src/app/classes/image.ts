@@ -11,6 +11,7 @@ export type ImageAttributes = {
     name: string;
     width: number;
     height: number;
+    
     alternativeText: string | null;
     caption: string | null;
 
