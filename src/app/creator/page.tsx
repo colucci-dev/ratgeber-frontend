@@ -46,7 +46,7 @@ export default function Creator() {
                     <input type="text" id="ort" placeholder="Ort"/>
                     <input type="submit" className="button" value="Generierung starten" />
                     {download.length > 0 ? (
-                    <a href={`/creator_pdfs/${download}.pdf`}>
+                    <a href={`/api/creator/pdf/${download}`}>
                     <input type="button" className="button" value="Herunterladen" />
                     </a>) : (<div></div>)}
             </form>

@@ -37,7 +37,7 @@ export async function askAssistant(threadId: string, question: string) {
                     console.log(`Pfad: ${filePath}`);
                     fs.appendFile(filePath, new Uint8Array(await new Response(file.body!).arrayBuffer()), (err) => { if (err) {console.error(err);}});
                 }
-                output += `**Ratgeber >** ![Generiertes Bild](/ai_images/${fileId}.png)`;
+                output += `**Ratgeber >** ![Generiertes Bild](/api/ai_images/${fileId})`;
                 break;
             }
         }
