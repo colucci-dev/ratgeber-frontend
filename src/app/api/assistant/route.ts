@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 type AssistantResponse = {
     response: string,
 }
+export const dynamic = 'force-dynamic' // defaults to auto
 
 export async function POST(req: NextRequest) {
     const request = await req.json();

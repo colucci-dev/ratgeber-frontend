@@ -1,5 +1,6 @@
 import { BusinessCardData } from "@/app/classes/businesscard";
 import { NextRequest, NextResponse } from "next/server";
+
 export async function POST(req: NextRequest)  {
     const details : BusinessCardData = await req.json() as BusinessCardData;
     const document = HTMLDocumentView({details});
