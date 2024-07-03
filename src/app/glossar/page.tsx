@@ -15,9 +15,12 @@ export default async function Glossar() {
   );
 
   return (
-    <PageContainer image="bmw_m8.png">
-      <h1>Hello World!</h1>
+    <PageContainer image="assets/bmw_m8.png">
+      <div className="blog-wrapper"><div className="blogArticle">
+        
       {result}
+      </div>
+      </div>
       </PageContainer>
   );
 }

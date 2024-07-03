@@ -47,7 +47,7 @@ export default function Assistant() {
             threadId = await fetchThread();
             setCookie("assistant", threadId, {sameSite: "none"});
         }
-        const response = await fetchAssistant(question, cookies.assistant!);
+        const response = await fetchAssistant(question, threadId);
         setResponse(response);
     }
     

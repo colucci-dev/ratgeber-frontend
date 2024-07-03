@@ -1,28 +1,60 @@
 'use client'
+import { useState } from "react";
+import { BusinessCardData } from "../classes/businesscard";
 import PageContainer from "../components/PageContainer";
+import { fetchVisitenkarte } from "../utils/api";
 
 export default function Creator() {
+    const [download, setDownload] = useState("");
+
     return (
         <PageContainer image="assets/bmw_m8.png">
-            <h1>Creator</h1>
-            <p><b>Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen.</b></p>
-            <h1>Visitenkarten-Generator</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" title="Vorname" />
-                <input type="text" title="Nachname"/>
-                <input type="text" title="Titel"/>
-                <input type="text" title="Berufsbezeichnung"/>
-                <input type="text" title="Tel."/>
-                <input type="text" title="Mobil"/>
-                <input type="text" title="Strasse"/>
-                <input type="text" title="PLZ"/>
-                <input type="text" title="Ort"/>
-                <input type="submit" title="Generierung starten" />
+            <div className="blog-wrapper">
+                <div className="blogArticle">
+                    <div className="title">Creator</div>
+
+                <p><b>Lassen Sie hier ihre persönliche Visitenkarte erstellen!</b></p>
+                <div className="title">Visitenkarten-Generator</div>
+                <form className="creator" onSubmit={handleSubmit}>
+                    <input type="text"  id="firstname" placeholder="Vorname" />
+                    <input type="text" id="lastname" placeholder="Nachname"/>
+                    <input type="text" id="job" placeholder="Berufsbezeichnung"/>
+                    <input type="text" id="telephone" placeholder="Tel."/>
+                    <input type="text" id="mobile" placeholder="Mobil"/>
+                    <input type="text" id="company" placeholder="Firma"/>
+                    <input type="text" id= "street" placeholder="Strasse"/>
+                    <input type="text" id="plz" placeholder="PLZ"/>
+                    <input type="text" id="ort" placeholder="Ort"/>
+                    <input type="submit" className="button" value="Generierung starten" />
+                    {download.length > 0 ? (
+                    <a href={`${process.env.NEXT_API}/assets/creator_pdfs/${download}.pdf`}>
+                    <button className="button">
+                        Herunterladen
+                    </button>
+                    </a>) : (<div></div>)}
             </form>
+                </div>
+            </div>
+            
         </PageContainer>
     )
+
+async function handleSubmit(event: any) {
+    event.preventDefault();
+    //event.currentTarget.elements.usernameInput.value
+    const formData : BusinessCardData = {
+        firstname: event.currentTarget.elements.firstname.value,
+        lastname: event.currentTarget.elements.lastname.value,
+        company: event.currentTarget.elements.company.value,
+        job: event.currentTarget.elements.job.value,
+        telephone: event.currentTarget.elements.telephone.value,
+        mobile: event.currentTarget.elements.mobile.value,
+        street: event.currentTarget.elements.street.value,
+        plz: event.currentTarget.elements.plz.value,
+        ort: event.currentTarget.elements.ort.value
+    };
+    const downloadId = await fetchVisitenkarte(formData);
+    setDownload(downloadId.response);
+    console.log(JSON.stringify(formData));
 }
-
-function handleSubmit() {
-
 }

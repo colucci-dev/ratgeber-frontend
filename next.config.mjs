@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 const nextConfig = {
     serverRuntimeConfig: {
         PROJECT_ROOT: __dirname
-    }
+    },
 };
 
 export default nextConfig;

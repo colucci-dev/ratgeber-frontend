@@ -20,9 +20,9 @@ export default async function Blog() {
         {views}
         </PageContainer>
     )
-}
 
 async function getCategoriesWithArticles() {
     const result : [CategoryResult] = (await fetchAPI("categories?populate[blogs][populate][0]=Image")).data;
     return result;
+}
 }

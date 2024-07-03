@@ -30,7 +30,7 @@ export default async function BlogTeaser() {
                     <img src={`${process.env.API_URL}${headline.attributes.Image.data.attributes.formats.medium.url}`} />
                 </div>
             <div className="headline-item headline-content">
-                <h6>{headline.attributes.category?.data.attributes.Name ?? "Unkategorisiert"} | {headline.attributes.publishedAt}</h6>
+                <h6>{headline.attributes.category?.data.attributes.Name ?? "Unkategorisiert"} | {new Date(headline.attributes.publishedAt).toLocaleDateString()}</h6>
                 <h2>{headline.attributes.Title.toUpperCase()}</h2>
                 <p>{headline.attributes.Description}</p>
             </div>

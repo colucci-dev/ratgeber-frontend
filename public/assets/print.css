@@ -1,0 +1,28 @@
+@media print {
+    body {
+        font-family: sans-serif;
+        font-size: 14pt;
+        margin: 2em;
+        color: #fff;
+        background-color: #000;
+    }
+
+    img {
+        width: 8cm;
+        height: auto;
+        position: absolute;
+        top: 1cm;
+        right: 1cm;
+        float: right;
+    }
+
+    .borders {
+        margin: 2cm 2cm;
+    }
+
+    .personalinfo {
+        width: 10cm;
+        position: absolute;
+        bottom: 2cm;
+    }
+}
