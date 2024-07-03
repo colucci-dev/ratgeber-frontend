@@ -3,19 +3,8 @@ import PageContainer from "../components/PageContainer";
 import { fetchAPI } from "../utils/api";
 import { BlocksRenderer, type BlocksContent } from "@strapi/blocks-react-renderer";
 
-
-export const getServerSideProps = (async () => {
-  // Fetch data from external API
+export default async function Page() {
   const keywords = await fetchAPI("begriffe");
-  // Pass data to the page via props
-  return { props: { keywords } }
-}) satisfies GetServerSideProps<{ keywords: any }>
- 
-
-export default function Page({
-  keywords,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
- 
   const result = keywords.data.map((begriff: any) => {
       return <div key={begriff.id}>
         <h1>
