@@ -4,7 +4,7 @@ export type BusinessCardData = {
     company: string;
     job: string;
     telephone: string;
-    mobile: string;
+    mail: string;
     street: string;
     plz: string;
     ort: string;

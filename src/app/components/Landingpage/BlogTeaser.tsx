@@ -25,16 +25,19 @@ export default async function BlogTeaser() {
     return (
     <div className="container">
         <div className="title">Aktuelle Themen</div>
+
+        <a href={`/blog/${headline.attributes.slug}`} >
             <div className="headline">
                 <div className="headline-item">
                     <img src={`${process.env.API_URL}${headline.attributes.Image.data.attributes.formats.medium.url}`} />
                 </div>
-            <div className="headline-item headline-content">
-                <h6>{headline.attributes.category?.data.attributes.Name ?? "Unkategorisiert"} | {new Date(headline.attributes.publishedAt).toLocaleDateString()}</h6>
-                <h2>{headline.attributes.Title.toUpperCase()}</h2>
-                <p>{headline.attributes.Description}</p>
+                <div className="headline-item headline-content">
+                    <h6>{headline.attributes.category?.data.attributes.Name ?? "Unkategorisiert"} | {new Date(headline.attributes.publishedAt).toLocaleDateString()}</h6>
+                    <h2>{headline.attributes.Title.toUpperCase()}</h2>
+                    <p>{headline.attributes.Description}</p>
+                </div>
             </div>
-        </div>
+        </a>
         <div className="grid-container">
             {blogPreview}
         </div>

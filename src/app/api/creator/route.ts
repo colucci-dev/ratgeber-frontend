@@ -12,6 +12,26 @@ export async function POST(req: NextRequest) {
         headless: true
     });
     const page = await browser.newPage();
+    await page.setRequestInterception(true);
+
+    // Request intercept handler... will be triggered with 
+    // each page.goto() statement
+
+    page.on('request', interceptedRequest => {
+
+        // Here, is where you change the request method and 
+        // add your post data
+        if (interceptedRequest.url().endsWith('/api/creator/document')) {
+            var data = {
+                'method': 'POST',
+                'postData': JSON.stringify(request),
+            };
+            interceptedRequest.continue(data);
+        }
+        else {
+            interceptedRequest.continue();
+        }
+    });
     await page.goto(`${process.env.NEXT_API}/api/creator/document`,
     {waitUntil: 'networkidle0'});
     const pdf = await page.pdf({format: 'a6'});

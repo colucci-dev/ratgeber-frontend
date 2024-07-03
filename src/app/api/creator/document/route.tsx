@@ -1,7 +1,7 @@
 import { BusinessCardData } from "@/app/classes/businesscard";
 import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest)  {
-    const details = await req.json() as BusinessCardData;
+    const details : BusinessCardData = await req.json() as BusinessCardData;
     const document = HTMLDocumentView({details});
     const hdr = new Headers();
     hdr.set('Content-Type', 'text/html; charset=utf-8');
@@ -31,7 +31,7 @@ return (
                 {props.details.job}<br/>
                 <p>
             Tel. {props.details.telephone}<br/>
-            Mobile. {props.details.mobile}
+            E-Mail {props.details.mail}
         </p>
                 </p>
                 

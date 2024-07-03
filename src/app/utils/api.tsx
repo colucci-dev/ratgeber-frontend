@@ -39,7 +39,7 @@ export async function fetchVisitenkarte(data: BusinessCardData) {
     const headers = new Headers();
     //next revalidate: Cache wird nach 300 Sekunden (5 minuten) aktualisiert
     const options = { method: 'POST', body: JSON.stringify(data) };
-    const response = await fetch(`${process.env.NEXT_API}/api/creator`, options);
+    const response = await fetch(`/api/creator`, options);
     if(!response.ok) {
         throw await response.json();
     }
