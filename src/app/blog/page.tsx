@@ -4,7 +4,7 @@ import CategoryView from "../components/Blog/CategoryView";
 import PageContainer from "../components/PageContainer";
 import { fetchAPI } from "../utils/api";
 
-
+export const dynamic = "force-dynamic";
 export default async function Blog() {
     const categories : [CategoryResult] = (await fetchAPI("categories?populate[blogs][populate][0]=Image")).data;
 

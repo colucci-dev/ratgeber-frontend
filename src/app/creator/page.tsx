@@ -23,7 +23,6 @@ export default function Creator() {
         };
         const downloadId = await fetchVisitenkarte(formData);
         setDownload(downloadId.response);
-        console.log(JSON.stringify(formData));
     }
 
     return (

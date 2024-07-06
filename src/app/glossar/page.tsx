@@ -3,6 +3,7 @@ import PageContainer from "../components/PageContainer";
 import { fetchAPI } from "../utils/api";
 import { BlocksRenderer, type BlocksContent } from "@strapi/blocks-react-renderer";
 
+export const dynamic = "force-dynamic";
 export default async function Page() {
   const keywords = await fetchAPI("begriffe");
   const result = keywords.data.map((begriff: any) => {
