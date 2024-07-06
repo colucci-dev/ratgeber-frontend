@@ -6,7 +6,7 @@ import { fetchAPI } from "../utils/api";
 
 
 export default async function Blog() {
-    const categories = await getCategoriesWithArticles();
+    const categories : [CategoryResult] = (await fetchAPI("categories?populate[blogs][populate][0]=Image")).data;
 
     var views: JSX.Element[] = [];
 
@@ -20,9 +20,4 @@ export default async function Blog() {
         {views}
         </PageContainer>
     )
-
-async function getCategoriesWithArticles() {
-    const result : [CategoryResult] = (await fetchAPI("categories?populate[blogs][populate][0]=Image")).data;
-    return result;
-}
 }

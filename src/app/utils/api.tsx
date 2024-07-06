@@ -1,10 +1,11 @@
 import { BusinessCardData } from "../classes/businesscard";
+import { CampaignData } from "../classes/campaign";
 
 export async function fetchAPI(endpoint: string) {
     const headers = new Headers();
     headers.set('Authorization', `Bearer ${process.env.API_TOKEN}`)
     //next revalidate: Cache wird nach 300 Sekunden (5 minuten) aktualisiert
-    const options = { method: 'GET', headers: headers, next: { revalidate: 300}};
+    const options = { method: 'GET', headers: headers, next: { revalidate: 0}};
     const response = await fetch(`${process.env.API_URL}/api/${endpoint}`, options);
     if(!response.ok) {
         throw await response.json();
@@ -36,7 +37,6 @@ export async function fetchThread() {
 }
 
 export async function fetchVisitenkarte(data: BusinessCardData) {
-    const headers = new Headers();
     //next revalidate: Cache wird nach 300 Sekunden (5 minuten) aktualisiert
     const options = { method: 'POST', body: JSON.stringify(data) };
     const response = await fetch(`/api/creator`, options);
@@ -44,4 +44,11 @@ export async function fetchVisitenkarte(data: BusinessCardData) {
         throw await response.json();
     }
     return await response.json();
+}
+
+export async function postCampaign(data: CampaignData) {
+    const headers = new Headers();
+    const options = {method: 'POST', body: JSON.stringify(data), next: {revalidate: 0}};
+    const response = await fetch(`/api/campaign`, options);
+    return response.ok;
 }

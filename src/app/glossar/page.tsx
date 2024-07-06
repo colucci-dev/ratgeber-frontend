@@ -19,7 +19,8 @@ export default async function Page() {
     <PageContainer image="assets/bmw_m8.png">
       <div className="blog-wrapper">
         <div className="blogArticle">
-        
+      <div className="title">Glossar</div>
+      <p><b>Hier finden Sie eine Erläuterung der wichtigsten Fachbegriffe aus dem Bereich Content Management, die Ihnen wahrscheinlich nicht geläufig sind.</b></p>
       {result}
       </div>
       </div>

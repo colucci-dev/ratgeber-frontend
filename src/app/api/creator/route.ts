@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
         }
     });
     await page.goto(`${process.env.NEXT_API}/api/creator/document`,
-    {waitUntil: 'networkidle0'});
+    {waitUntil: 'domcontentloaded'});
     const pdf = await page.pdf({format: 'a6'});
     const uuid = randomUUID();
     const filePath = serverPath(`public/creator_pdfs/${uuid}.pdf`);

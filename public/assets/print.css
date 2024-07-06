@@ -1,10 +1,31 @@
+
+@font-face {
+    font-family: BMWTypeNext;
+    src: url("http://localhost:3000/fonts/BMWTypeNextLatin-Regular.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: BMWTypeNext;
+    font-weight: bold;
+    src: url("http://localhost:3000/fonts/BMWTypeNextLatin-Bold.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: BMWTypeNext;
+    font-weight: lighter;
+    src: url("http://localhost:3000/fonts/BMWTypeNextLatin-Light.otf") format("opentype");
+  }
+  :root {
+    --bmw-text: #494949;
+  }
+
 @media print {
+
     body {
-        font-family: sans-serif;
+        font-family: Helvetica, sans-serif;
         font-size: 14pt;
         margin: 2em;
-        color: #fff;
-        background-color: #000;
+        color: var(--bmw-text);
     }
 
     img {

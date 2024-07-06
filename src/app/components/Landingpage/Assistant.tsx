@@ -52,10 +52,10 @@ export default function Assistant() {
     }
     
     return (
-    <div className="assistant-container">
+    <div id="assistant" className="assistant-container">
         <div className="assistant-wrapper">
         <div className="title">
-            Ihr pers&ouml;nlicher Assistent
+            Ihr BMW-Coach Karl
         </div>
         <form className="input-container" onSubmit={handleQuestion} >
 
@@ -65,7 +65,7 @@ export default function Assistant() {
                 </Markdown>
             </div>
             <div className="input-container">
-                <input type="text" id="question" placeholder="Stellen Sie eine Frage.." />
+                <input type="text" id="question" placeholder="Stellen Sie Karl eine Frage.." />
                 <button>
                     <img src="assets/send.svg" alt="Senden" />
                 </button>

@@ -9,6 +9,24 @@ export async function POST(req: NextRequest)  {
     return new NextResponse(await getData(document), {headers: hdr});
 }
 
+export async function GET(req: NextRequest) {
+    const details : BusinessCardData = {
+        firstname: "Ueli",
+        lastname: "Meier",
+        company: "Garage XYZ AG",
+        job: "Geschäftsführer",
+        telephone: "+41 79 123 45 67",
+        mail: "ueli.meier@garagexyz.ch",
+        street: "Haupstrasse 1",
+        plz: "8000",
+        ort: "Zürich"
+    };
+    const hdr = new Headers();
+    const document = HTMLDocumentView({details});
+    hdr.set('Content-Type', 'text/html; charset=utf-8');
+    return new NextResponse(await getData(document), {headers: hdr});
+}
+
 const getData = async (component: any) => {
     const ReactDOMServer = (await import('react-dom/server')).default;
     const staticMarkup = ReactDOMServer.renderToString(component);

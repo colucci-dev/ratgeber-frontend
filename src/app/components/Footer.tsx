@@ -1,24 +1,24 @@
 export default function Footer() {
     return (
     <div className="footer">
-        <a>
+        <div>
             Sitemap
-        </a>
-        <a>
+        </div>
+        <div>
             Rechtliche Hinweise
-        </a>
-        <a>
+        </div>
+        <div>
             Cookies
-        </a>
-        <a>
+        </div>
+        <div>
             Impressum
-        </a>
-        <a>
+        </div>
+        <div>
             Kontakt
-        </a>
-        <a>
+        </div>
+        <div>
             Datenschutz
-        </a>
+        </div>
     </div>
     )
 }

@@ -9,13 +9,30 @@
   --bmw-button: #6F6F6F;
 }
 
+@font-face {
+  font-family: BMWTypeNext;
+  src: url("http://localhost:3000/fonts/BMWTypeNextLatin-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BMWTypeNext;
+  font-weight: bold;
+  src: url("http://localhost:3000/fonts/BMWTypeNextLatin-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: BMWTypeNext;
+  font-weight: lighter;
+  src: url("http://localhost:3000/fonts/BMWTypeNextLatin-Light.otf") format("opentype");
+}
+
 body {
   margin: 0;
   box-sizing: border-box;
   max-width: 1630px;
   width: 85%;
   margin: 0 auto;
-  font-family: sans-serif;
+  font-family: BMWTypeNext, sans-serif;
 }
 
 .header {
@@ -52,9 +69,9 @@ body {
 .header a {
   text-decoration: none;
   color: var(--bmw-titelfarbe);
-  font-size: 14pt;
+  font-size: 1.4rem;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: BMWTypeNext, sans-serif;
   padding-left: 30px;
   padding-right: 30px;
   height: max-content;
@@ -90,7 +107,8 @@ body {
   color: var(--bmw-titelfarbe);
 }
 
-.title { 
+.title {
+  font-weight: bold;
   font-size: 38pt;
   width: 100%;
   padding-bottom: 2%;
@@ -212,12 +230,13 @@ body {
 }
 
 .headline {
-  display: grid;
+  display: inline-grid;
   grid-template-columns: 1.25fr 0.75fr;
   margin-bottom: 5%;
 }
-.headline-item {
-  display: block;
+#headline {
+  text-decoration: none;
+  color: var(--bmw-titelfarbe);
 }
 .headline-item img {
   width: 100%;
@@ -240,6 +259,7 @@ body {
 color: var(--bmw-text);
 width: 1000px;
 padding: 5%;
+font-size: 1.4rem;
 }
 
 
@@ -274,6 +294,37 @@ padding: 5%;
   background-color: var(--bmw-button);
   justify-content: center;
 }
+.logos {
+  display: flex;
+  box-sizing: border-box;
+}
+.container a {
+  text-decoration: none;
+}
+
+.headline a {
+  color: var(--bmw-titelfarbe);
+}
+
+.blogArticle img {
+  width: 50%;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.backend-table {
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border: 1px solid var(--bmw-text);
+}
+.backend-table th, td {
+  border: 1px solid var(--bmw-text);
+  padding: 1%;
+}
+
 
 @media only screen and (max-width: 768px) {
   body {
@@ -283,12 +334,24 @@ padding: 5%;
   .title {
     word-break:break-word;
   }
+  .footer {
+    display: block;
+    text-align: center;
+  }
+  .footer div{
+    margin: 2%;
+  }
 }
 
 @media only screen and (max-width: 1100px) {
-
+  .blogArticle {
+    width: 100%;
+  }
   .grid-card {
     width: 100%;
+  }
+  .logos {
+    display: none;
   }
 
   .grid-card img {
@@ -301,6 +364,8 @@ padding: 5%;
   .headline {
     display: block;
   }
+
+
   .headline-content {
     margin-left: 0%;
     margin-right: 0%;

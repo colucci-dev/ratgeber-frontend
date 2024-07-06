@@ -25,9 +25,9 @@ export default async function BlogTeaser() {
     return (
     <div className="container">
         <div className="title">Aktuelle Themen</div>
-
-        <a href={`/blog/${headline.attributes.slug}`} >
+        <a id="headline" href={`/blog/${headline.attributes.slug}`} >
             <div className="headline">
+            
                 <div className="headline-item">
                     <img src={`${process.env.API_URL}${headline.attributes.Image.data.attributes.formats.medium.url}`} />
                 </div>
@@ -36,8 +36,9 @@ export default async function BlogTeaser() {
                     <h2>{headline.attributes.Title.toUpperCase()}</h2>
                     <p>{headline.attributes.Description}</p>
                 </div>
+
             </div>
-        </a>
+            </a>
         <div className="grid-container">
             {blogPreview}
         </div>

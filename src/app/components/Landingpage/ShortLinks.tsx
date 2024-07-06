@@ -18,9 +18,9 @@ export default function ShortLinks() {
                         </a>
                 </div>
                 <div className="grid-card bg-white">
-                    <a href="/downloads">
+                    <a href="#assistant">
                         <img src="assets/keyboard.png"/>
-                        <p className="link">DOWNLOADS</p>
+                        <p className="link">ASSISTANT</p>
                     </a>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 export default function Header(props: any) {
     const baseURL = process.env.NEXT_API;
@@ -6,11 +7,13 @@ export default function Header(props: any) {
         <div className="wrapper">
             <div className="group-left">
                 <a href="/">
-                <img src={`${baseURL}/assets/Logo_BMW_GROUP.svg`}/>
+                <img src={`${baseURL}/assets/Logo_BMW_GROUP.svg`} alt="Logo BMW Group"/>
                 </a>
-                <img src={`${baseURL}/assets/Logo_BMW.svg`}/>
-                <img src={`${baseURL}/assets/Logo_MINI.svg`}/>
-                <img src={`${baseURL}/assets/Logo_Rolls-Royce.svg`} />
+                <div className="logos">
+                <img src={`${baseURL}/assets/Logo_BMW.svg`} alt="Logo BMW"/>
+                <img src={`${baseURL}/assets/Logo_MINI.svg`} alt="Logo MINI" />
+                <img src={`${baseURL}/assets/Logo_Rolls-Royce.svg`} alt="Logo Rolls-Royce" />
+                </div>
             </div>
             <div className="group-right">
                 <a href="/creator"><span>Creator</span></a>

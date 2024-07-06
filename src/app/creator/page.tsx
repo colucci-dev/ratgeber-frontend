@@ -30,10 +30,9 @@ export default function Creator() {
         <PageContainer image="assets/bmw_m8.png">
             <div className="blog-wrapper">
                 <div className="blogArticle">
-                    <div className="title">Creator</div>
+                <div className="title">Visitenkarten-Generator</div>
 
                 <p><b>Lassen Sie hier ihre persönliche Visitenkarte erstellen!</b></p>
-                <div className="title">Visitenkarten-Generator</div>
                 <form className="creator" onSubmit={handleSubmit}>
                     <input type="text"  id="firstname" placeholder="Vorname" />
                     <input type="text" id="lastname" placeholder="Nachname"/>
