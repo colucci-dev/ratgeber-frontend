@@ -5,6 +5,7 @@ type CampaignResponse = {
     data: [{attributes: {firstname: string, lastname: string, mail: string}}]
 }
 
+export const dynamic = "force-dynamic";
 export default async function Backend() {
     const campaignUsers : CampaignResponse = await fetchAPI("campaigns");
     const rows : JSX.Element[] = [];
