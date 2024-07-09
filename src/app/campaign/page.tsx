@@ -8,7 +8,6 @@ export default function Campaign() {
     const [requestOk, setRequestOk] = useState(false);
     async function handleSubmit(event: any) {
         event.preventDefault();
-        //event.currentTarget.elements.usernameInput.value
         const formData : CampaignData = {
             firstname: event.currentTarget.elements.firstname.value,
             lastname: event.currentTarget.elements.lastname.value,

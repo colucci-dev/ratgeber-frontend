@@ -35,46 +35,54 @@ body {
   font-family: BMWTypeNext, sans-serif;
 }
 
-.header {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  row-gap: 6px;
-  padding-bottom: 30px;
-  padding-top: 30px;
-  border-bottom: 10px var(--bmw-hellgrau) solid;
+.nav-item {
+  list-style: none;
+}
+header a {
+  text-decoration: none;
+}
+header {
+  border-bottom: 10px solid var(--bmw-hellgrau);
 }
 
-.header .wrapper {
+
+.navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem;
 }
 
-.header img {
-  margin: 0.5rem;
-  width: auto;
-  display: block;
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  color: var(--bmw-titelfarbe);
+
 }
 
-.group-left {
+
+.nav-menu {
   display: flex;
-  text-align: center;
-}
-
-.group-right {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.header a {
-  text-decoration: none;
-  color: var(--bmw-titelfarbe);
-  font-size: 1.4rem;
+.nav-item {
+  margin-left: 3rem;
+  font-size: 26pt;
+}
+
+.nav-item a {
+  font-size: 1.6rem;
   font-weight: bold;
-  font-family: BMWTypeNext, sans-serif;
-  padding-left: 30px;
-  padding-right: 30px;
-  height: max-content;
+  font-family: BMWTypeNext, Helvetica, sans-serif;
+  color: var(--bmw-titelfarbe);
+  cursor: pointer;
+}
+
+.navbar img {
+  width: auto;
+  margin-left: 1rem;
 }
 
 .page-container {
@@ -294,10 +302,7 @@ font-size: 1.4rem;
   background-color: var(--bmw-button);
   justify-content: center;
 }
-.logos {
-  display: flex;
-  box-sizing: border-box;
-}
+
 .container a {
   text-decoration: none;
 }
@@ -331,6 +336,34 @@ font-size: 1.4rem;
     margin: 0;
     width: 100%;
   }
+  /*start ChatGPT Header*/
+
+  .nav-menu {
+    display: none;
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    text-align: center;
+    transition: 0.7s;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    left: 0;
+  }
+  .nav-item {
+    margin: 2.5rem 0;
+  }
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  /*end chatgpt header*/
+
+
   .title {
     word-break:break-word;
   }
@@ -365,6 +398,9 @@ font-size: 1.4rem;
     display: block;
   }
 
+  .hide-mobile {
+    display: none;
+  }
 
   .headline-content {
     margin-left: 0%;

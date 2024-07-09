@@ -1,26 +1,28 @@
 import Image from "next/image";
+import { useState } from "react";
+import MenuIcon from "./MenuIcon";
+
 
 export default function Header(props: any) {
     const baseURL = process.env.NEXT_API;
     return (
-    <div className="header">
-        <div className="wrapper">
-            <div className="group-left">
-                <a href="/">
-                <img src={`${baseURL}/assets/Logo_BMW_GROUP.svg`} alt="Logo BMW Group"/>
+        <header>
+            <nav className="navbar">
+                <a href="/" className="nav-logo">
+                    <img src={`${baseURL}/assets/Logo_BMW_GROUP.svg`} />
+                    <img className="hide-mobile" src={`${baseURL}/assets/Logo_BMW.svg`} />
+                    <img className="hide-mobile" src={`${baseURL}/assets/Logo_MINI.svg`} />
+                    <img className="hide-mobile" src={`${baseURL}/assets/Logo_Rolls-Royce.svg`} />
+                   
+                   
                 </a>
-                <div className="logos">
-                <img src={`${baseURL}/assets/Logo_BMW.svg`} alt="Logo BMW"/>
-                <img src={`${baseURL}/assets/Logo_MINI.svg`} alt="Logo MINI" />
-                <img src={`${baseURL}/assets/Logo_Rolls-Royce.svg`} alt="Logo Rolls-Royce" />
-                </div>
-            </div>
-            <div className="group-right">
-                <a href="/creator"><span>Creator</span></a>
-                <a href="/blog"><span>Blog</span></a>
-                <a href="/glossar"><span>Glossar</span></a>
-            </div>
-        </div>
-    </div>
+            <ul className="nav-menu">
+                <li className="nav-item"><a href="/creator">Creator</a></li>
+                <li className="nav-item"><a href="/blog">Blog</a></li>
+                <li className="nav-item"><a href="/glossar">Glossar</a></li>
+            </ul>
+            <MenuIcon />
+            </nav>
+        </header>
     )
 }
