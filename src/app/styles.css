@@ -53,6 +53,10 @@ header {
   padding: 2rem 2rem;
 }
 
+.navbar ul{
+  padding-inline-start: 0;
+}
+
 .hamburger {
   display: none;
   font-size: 2rem;
@@ -336,7 +340,6 @@ font-size: 1.4rem;
     margin: 0;
     width: 100%;
   }
-  /*start ChatGPT Header*/
 
   .nav-menu {
     display: none;
@@ -355,7 +358,7 @@ font-size: 1.4rem;
     left: 0;
   }
   .nav-item {
-    margin: 2.5rem 0;
+    margin: 1.5rem 0;
   }
   .hamburger {
     display: block;
