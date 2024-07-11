@@ -24,7 +24,7 @@ export async function askAssistant(threadId: string, question: string) {
         for (const message of messages.data.reverse()) {
             switch(message.content[0].type) {
             case 'text':
-                output += `${message.role == 'user' ? "**Sie" : "**Karl"} >** ${(message.content[0] as any).text.value} \r\n\r\n `;
+                output += `${message.role == 'user' ? "**Sie" : "**Karl"} >** ${(message.content[0] as any).text.value.replace(/.\d+†source./g, '')} \r\n\r\n `;
                 break;
             case 'image_url':
                 output += `${message.role == 'user' ? "** Sie" : "**Karl"} >** ${(message.content[0] as any).image_url.value}`;
