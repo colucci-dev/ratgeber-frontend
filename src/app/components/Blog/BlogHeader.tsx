@@ -3,7 +3,7 @@ export default function BlogHeader(props: {category: string, title: string, desc
     return (
         <div className="blog-header">
     <h5>
-        {props.category} | {date.toLocaleDateString()}
+        {props.category} | {date.toLocaleDateString('de-DE')}
     </h5>
     <h1>
         {props.title.toUpperCase()}
