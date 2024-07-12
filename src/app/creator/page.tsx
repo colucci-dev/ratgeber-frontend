@@ -31,7 +31,7 @@ export default function Creator() {
                 <div className="blogArticle">
                 <div className="title">Visitenkarten-Generator</div>
 
-                <p><b>Lassen Sie hier ihre persönliche Visitenkarte erstellen!</b></p>
+                <p><b>Lassen Sie hier Ihre persönliche Visitenkarte erstellen!</b></p>
                 <form className="creator" onSubmit={handleSubmit}>
                     <input type="text"  id="firstname" placeholder="Vorname" />
                     <input type="text" id="lastname" placeholder="Nachname"/>

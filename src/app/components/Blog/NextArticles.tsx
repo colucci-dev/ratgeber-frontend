@@ -1,13 +1,14 @@
 import { ArticleResult } from "@/app/classes/article";
 import { fetchAPI } from "@/app/utils/api"
 import Card from "../Card";
+var _ = require("lodash");
 
 export default async function NextArticles() {
-    const articles : {data: [ArticleResult]} = await fetchAPI("blogs?populate=Image,category&pagination[pageSize]=3&pagination[page]=1")
-
+    const articles : {data: [ArticleResult]} = await fetchAPI("blogs?populate=Image,category&pagination[page]=1")
+    const three : [ArticleResult] = _.sampleSize(articles.data, 3);
     const previews : JSX.Element[] = [];
 
-    articles.data.forEach((article, index) => {
+    three.forEach((article, index) => {
         previews.push(
             <Card 
             key={article.id}
