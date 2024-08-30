@@ -6,7 +6,7 @@ import PageContainer from "./components/PageContainer";
 export const dynamic = "force-dynamic";
 export default function Home() {
     return (
-        <PageContainer image={`${process.env.NEXT_API}/assets/bmw_m8.png`}>
+        <PageContainer image={`${process.env.NEXT_API}/assets/car_img.webp`}>
         <ShortLinks />
         <Assistant />
         <BlogTeaser />

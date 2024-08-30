@@ -16,7 +16,7 @@ export default async function Blog() {
         )
     });
     return (
-        <PageContainer image="assets/bmw_m8.png">
+        <PageContainer image="assets/car_img.webp">
         {views}
         </PageContainer>
     )

@@ -55,7 +55,7 @@ export default function Assistant() {
     <div id="assistant" className="assistant-container">
         <div className="assistant-wrapper">
         <div className="title">
-            Ihr BMW-Coach Karl
+            Ihr pers&ouml;nlicher Assistent
         </div>
         <form className="input-container" onSubmit={handleQuestion} >
 

@@ -27,7 +27,7 @@ export async function askAssistant(threadId: string, question: string) {
                 output += `${message.role == 'user' ? "**Sie" : "**Karl"} >** ${(message.content[0] as any).text.value.replace(/\【.*?】/g, "")} \r\n\r\n `;
                 break;
             case 'image_url':
-                output += `${message.role == 'user' ? "** Sie" : "**Karl"} >** ${(message.content[0] as any).image_url.value}`;
+                output += `${message.role == 'user' ? "** Sie" : "**Assistant"} >** ${(message.content[0] as any).image_url.value}`;
                 break;
             case 'image_file':
                 const fileId = (message.content[0] as any).image_file.file_id;
@@ -37,7 +37,7 @@ export async function askAssistant(threadId: string, question: string) {
                     console.log(`Pfad: ${filePath}`);
                     fs.appendFile(filePath, new Uint8Array(await new Response(file.body!).arrayBuffer()), (err) => { if (err) {console.error(err);}});
                 }
-                output += `**Karl >** ![Generiertes Bild](/api/ai_images/${fileId})`;
+                output += `**Assistant >** ![Generiertes Bild](/api/ai_images/${fileId})`;
                 break;
             }
         }

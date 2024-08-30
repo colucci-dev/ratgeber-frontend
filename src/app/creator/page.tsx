@@ -26,7 +26,7 @@ export default function Creator() {
     }
 
     return (
-        <PageContainer image="assets/bmw_m8.png">
+        <PageContainer image="assets/car_img.webp">
             <div className="blog-wrapper">
                 <div className="blogArticle">
                 <div className="title">Visitenkarten-Generator</div>

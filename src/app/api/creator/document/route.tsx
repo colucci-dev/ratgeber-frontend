@@ -42,7 +42,7 @@ return (
         <body>
             <div className="border">
 
-        <img src={`${process.env.NEXT_API}/assets/Logo_BMW.svg`} />
+        <h1>Ratgeber</h1>
         <div className="container"> 
             <div className="personalinfo">
                 <p>
